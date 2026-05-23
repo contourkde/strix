@@ -1,0 +1,11 @@
+[build]
+dockerfilePath = "Dockerfile"
+
+[deploy]
+startCommand = "sleep infinity"
+restartPolicyType = "on_failure"
+
+[env]
+STRIX_SANDBOX_MODE = "true"
+STRIX_LLM = "gemini/gemini-1.5-pro"
+GEMINI_API_KEY = "${GEMINI_API_KEY}"

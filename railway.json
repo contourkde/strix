@@ -1,0 +1,36 @@
+{
+  "name": "Strix AI Penetration Testing Agent",
+  "description": "An AI-powered penetration testing agent that autonomously identifies, analyzes, and exploits security vulnerabilities.",
+  "repository": "https://github.com/contourkde/strix",
+  "services": {
+    "strix": {
+      "builder": "DOCKERFILE",
+      "buildCommand": "",
+      "startCommand": "sleep infinity",
+      "variables": {
+        "GEMINI_API_KEY": {
+          "description": "Your Gemini API Key to power the LLM.",
+          "type": "string"
+        },
+        "GEMINI_PROJECT_NAME": {
+          "description": "Your GCP Project Name for Gemini (e.g., projects/1234567890).",
+          "type": "string"
+        },
+        "GEMINI_PROJECT_NUMBER": {
+          "description": "Your GCP Project Number for Gemini.",
+          "type": "string"
+        },
+        "STRIX_LLM": {
+          "description": "The LLM model to use.",
+          "type": "string",
+          "default": "gemini/gemini-1.5-pro"
+        },
+        "STRIX_SANDBOX_MODE": {
+          "description": "Run Strix in Sandbox Mode to avoid Docker socket requirements.",
+          "type": "boolean",
+          "default": "true"
+        }
+      }
+    }
+  }
+}
