@@ -11,7 +11,7 @@ This template uses Google Gemini for its LLM provider.
 To deploy this template, ensure the following environment variables are set in your Railway project:
 
 - `STRIX_SANDBOX_MODE=true`
-- `STRIX_LLM=gemini/gemini-1.5-pro` (or another supported Gemini model)
+- `STRIX_LLM=gemini/gemini-3.1-pro-preview` (or another supported Gemini model)
 - `GEMINI_API_KEY` - Your Google Gemini API key.
 
 ## Execution
@@ -22,16 +22,16 @@ To run a penetration test, use the Railway CLI to execute a command inside your 
 
 ```bash
 # 1. Open a shell into the running container
-railway shell
+railway ssh
 
 # 2. Run your Strix command
-strix scan "example.com" --mode thorough
+strix -t example.com -m deep
 ```
 
 Or execute directly from your local terminal:
 
 ```bash
-railway execute -- "strix scan example.com --mode thorough"
+railway ssh -- "strix -t example.com -m deep"
 ```
 
 ## Available Tools

@@ -23,7 +23,7 @@
         "STRIX_LLM": {
           "description": "The LLM model to use.",
           "type": "string",
-          "default": "gemini/gemini-1.5-pro"
+          "default": "gemini/gemini-3.1-pro-preview"
         },
         "STRIX_SANDBOX_MODE": {
           "description": "Run Strix in Sandbox Mode to avoid Docker socket requirements.",
