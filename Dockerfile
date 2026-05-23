@@ -206,6 +206,10 @@ USER root
 RUN cp -r /tmp/strix_repo/strix/* /app/strix/ && \
     chown -R pentester:pentester /app/strix
 
+# Patch Strix CLI to skip Docker checks when running inside the container
+RUN sed -i 's/check_docker_installed()/# check_docker_installed()/g' /app/strix/interface/main.py && \
+    sed -i 's/pull_docker_image()/# pull_docker_image()/g' /app/strix/interface/main.py
+
 RUN echo 'export PATH="/home/pentester/go/bin:/home/pentester/.local/bin:/home/pentester/.npm-global/bin:$PATH"' >> /home/pentester/.bashrc && \
     echo 'export PATH="/home/pentester/go/bin:/home/pentester/.local/bin:/home/pentester/.npm-global/bin:$PATH"' >> /home/pentester/.profile
 
