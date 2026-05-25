@@ -210,6 +210,9 @@ RUN cp -r /tmp/strix_repo/strix/* /app/strix/ && \
 RUN sed -i 's/^[[:space:]]*check_docker_installed().*/    pass/g' /app/strix/interface/main.py && \
     sed -i 's/^[[:space:]]*pull_docker_image().*/    pass/g' /app/strix/interface/main.py
 
+# Patch Textual to provide an encoding attribute on _PrintCapture for libtmux compatibility
+RUN sed -i '/def write(self, text: str) -> None:/i \    @property\n    def encoding(self) -> str:\n        return "utf-8"\n' /app/.venv/lib/python3.13/site-packages/textual/app.py
+
 RUN echo 'export PATH="/home/pentester/go/bin:/home/pentester/.local/bin:/home/pentester/.npm-global/bin:$PATH"' >> /home/pentester/.bashrc && \
     echo 'export PATH="/home/pentester/go/bin:/home/pentester/.local/bin:/home/pentester/.npm-global/bin:$PATH"' >> /home/pentester/.profile
 
